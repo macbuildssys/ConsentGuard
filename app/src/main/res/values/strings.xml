@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Watches the screen for cookie and tracking consent prompts and taps the reject option automatically. Does not read or store any content.</string>
+</resources>

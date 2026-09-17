@@ -1,0 +1,115 @@
+[
+  {
+    "name": "generic_web",
+    "rejectResourceIds": [],
+    "rejectTextPatterns": [
+      "reject all",
+      "decline all",
+      "refuse all",
+      "reject cookies",
+      "alle ablehnen",
+      "ablehnen",
+      "tout refuser",
+      "refuser tout",
+      "rechazar todo",
+      "rifiuta tutto",
+      "weiger alles"
+    ],
+    "necessaryResourceIds": [],
+    "necessaryTextPatterns": [
+      "necessary only",
+      "essential only",
+      "only necessary",
+      "essential cookies only",
+      "necessary cookies only",
+      "only essential cookies",
+      "only necessary cookies",
+      "continue without accepting",
+      "ohne akzeptieren fortfahren",
+      "ohne zu akzeptieren",
+      "fortfahren ohne",
+      "continuer sans accepter",
+      "apenas os necessarios",
+      "apenas os necessários",
+      "nur notwendige",
+      "nur essenzielle",
+      "necessaire uniquement",
+      "solo necesarias",
+      "solo necessari"
+    ],
+    "manageResourceIds": [],
+    "manageTextPatterns": [
+      "manage options",
+      "manage preferences",
+      "manage cookies",
+      "cookie settings",
+      "privacy settings",
+      "cookie preferences",
+      "optionen verwalten",
+      "cookie einstellungen",
+      "gestionar opciones",
+      "gestisci opzioni cookie"
+    ]
+  },
+  {
+    "name": "consentmanager_alt_wording",
+    "rejectResourceIds": [],
+    "rejectTextPatterns": [
+      "disagree",
+      "i do not accept",
+      "do not accept",
+      "nicht zustimmen"
+    ],
+    "necessaryResourceIds": [],
+    "necessaryTextPatterns": [],
+    "manageResourceIds": [],
+    "manageTextPatterns": [
+      "manage consent",
+      "cookie settings",
+      "privacy settings"
+    ]
+  },
+  {
+    "name": "google_funding_choices",
+    "rejectResourceIds": [],
+    "rejectTextPatterns": [],
+    "necessaryResourceIds": [],
+    "necessaryTextPatterns": [],
+    "manageResourceIds": [],
+    "manageTextPatterns": [],
+    "toggleResourceIdPrefixes": [
+      "fc-preference-slider"
+    ],
+    "confirmResourceIds": [],
+    "confirmTextPatterns": [
+      "confirm choices",
+      "confirm my choices",
+      "save choices"
+    ]
+  },
+  {
+    "name": "sourcepoint_style_reject_buttons",
+    "rejectResourceIds": [],
+    "rejectTextPatterns": [],
+    "necessaryResourceIds": [],
+    "necessaryTextPatterns": [],
+    "manageResourceIds": [],
+    "manageTextPatterns": [
+      "preferences"
+    ],
+    "rejectButtonTextPatterns": [
+      "reject"
+    ],
+    "expandSectionTextPatterns": [
+      "special purposes",
+      "special features"
+    ],
+    "confirmResourceIds": [],
+    "confirmTextPatterns": [
+      "apply settings",
+      "confirm choices",
+      "confirm my choices",
+      "save choices"
+    ]
+  }
+]
