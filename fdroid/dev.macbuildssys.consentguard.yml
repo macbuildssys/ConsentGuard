@@ -1,0 +1,37 @@
+# F-Droid metadata template
+#
+# This file is NOT read by our own build. F-Droid metadata lives in
+# their own fdroiddata repo, not in the app's repo. When ready to submit:
+#   1. Push this project to a public GitHub repo (replace SourceCode below).
+#   2. Tag the release commit to match versionName in app/build.gradle.kts,
+#      e.g. `git tag v0.0.1 && git push --tags`.
+#   3. Fork https://gitlab.com/fdroid/fdroiddata, add this file there as
+#      metadata/dev.macbuildssys.consentguard.yml, open a merge request.
+# See https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/
+
+Categories:
+  - Security
+
+License: MIT
+
+AuthorName: Dev
+SourceCode: https://github.com/macbuildssys/ConsentGuard
+IssueTracker: https://github.com/macbuildssys/ConsentGuard/issues
+
+AutoName: ConsentGuard
+
+RepoType: git
+Repo: https://github.com/macbuildssys/ConsentGuard.git
+
+Builds:
+  - versionName: '0.0.1'
+    versionCode: 1
+    commit: v0.0.1
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: '0.0.1'
+CurrentVersionCode: 1

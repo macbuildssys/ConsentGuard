@@ -1,0 +1,31 @@
+# Build output
+.gradle/
+build/
+app/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+.cxx/
+.externalNativeBuild/
+captures/
+
+# Machine specific, never portable between computers
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# IDE and editor
+.idea/
+.kotlin/
+*.iml
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+*.hprof

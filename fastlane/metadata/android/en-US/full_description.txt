@@ -1,0 +1,7 @@
+ConsentGuard monitors the screen for cookie and tracking consent prompts in Chrome and in any app's embedded WebView. It also recognises fully native consent dialogues and automatically selects the 'reject' option, so you don't have to click through the same banner repeatedly.
+
+Some consent screens do not offer a single reject button, but instead provide a long list of individual toggles. ConsentGuard finds and switches off every one of these automatically, then confirms.
+
+You can choose what to reject: ad tracking, analytics/stats tracking and everything else non-essential can be turned on or off independently in the app's settings.
+
+This app requests no permissions beyond Accessibility Service, makes no network requests and collects no data. It does not block ads or pop-ups from displaying; this is a different issue requiring a network-level filter rather than an accessibility service.
