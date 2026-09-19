@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="accessibility_service_description">Watches the screen for cookie and tracking consent prompts and taps the reject option automatically. Does not read or store any content.</string>
+    <string name="accessibility_service_description">Reads the on screen text only to find cookie and tracking consent prompts, then taps the reject option or switches optional choices off. It does not send anything anywhere and keeps nothing except your settings. It works on a best effort basis and can miss things.</string>
+    <string name="best_effort_notice">ConsentGuard works on a best effort basis. It tries to reject cookie and tracking choices and to switch off optional ones, but it can miss some, and it cannot promise that a site stops tracking you or that any law is met. Choices a site marks as required or essential are left on. If it is not sure that every optional switch is off, it does not press Save or Confirm and leaves the panel as it is. Check the sites that matter to you yourself.</string>
+    <string name="copyright_notice">© macbuildssys</string>
 </resources>
