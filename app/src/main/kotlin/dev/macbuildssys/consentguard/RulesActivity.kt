@@ -18,8 +18,8 @@ class RulesActivity : Activity() {
         bindSwitch(R.id.rejectOtherSwitch, ConsentBlockerService.KEY_REJECT_OTHER, prefs)
     }
 
-    /* Every category defaults to true (reject it) so a fresh install
-       behaves exactly like before this screen existed. */
+    /* Every switch on this screen defaults to on, so every optional
+       category is rejected until the person chooses otherwise. */
     private fun bindSwitch(viewId: Int, prefKey: String, prefs: SharedPreferences) {
         val switchView = findViewById<Switch>(viewId)
         switchView.isChecked = prefs.getBoolean(prefKey, true)

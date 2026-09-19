@@ -17,6 +17,7 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         statusText = findViewById(R.id.statusText)
+        forgetOldHistory()
 
         findViewById<Button>(R.id.openSettingsButton).setOnClickListener {
             startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
@@ -38,6 +39,14 @@ class MainActivity : Activity() {
         } else {
             "Service is disabled. Tap below, find ConsentGuard, and turn it on."
         }
+    }
+
+    /* Earlier versions kept a short list of recent results. Nothing is kept
+       any more, and this clears whatever an older version left behind. */
+    private fun forgetOldHistory() {
+        val editor = getSharedPreferences(ConsentBlockerService.PREFS_NAME, MODE_PRIVATE).edit()
+        ConsentBlockerService.LEGACY_HISTORY_KEYS.forEach { editor.remove(it) }
+        editor.apply()
     }
 
     private fun isServiceEnabled(): Boolean {
