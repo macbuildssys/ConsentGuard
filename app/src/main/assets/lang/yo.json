@@ -1,0 +1,221 @@
+{
+ "language": "yo",
+ "name": "Yoruba",
+ "status": "draft",
+ "enabled": true,
+ "reject": [
+  "ko gbogbo re",
+  "ko gbogbo won",
+  "ko gbogbo",
+  "ko gbogbo kuki",
+  "ko kuki",
+  "tesiwaju laigba",
+  "ma se gba",
+  "mi o gba",
+  "yo iyonda kuro",
+  "rara o se",
+  "pa gbogbo re",
+  "ko ki o si pa",
+  "=ko",
+  "=rara",
+  "=mi o gba",
+  "=ma gba"
+ ],
+ "necessary": [
+  "awon to se pataki nikan",
+  "awon kuki to se pataki nikan",
+  "awon to pondandan nikan",
+  "gba awon to se pataki nikan",
+  "tesiwaju pelu awon to se pataki nikan",
+  "=awon kuki to se pataki",
+  "=awon to se pataki",
+  "=se pataki nikan"
+ ],
+ "manage": [
+  "sakoso awon aayo",
+  "sakoso awon asayan",
+  "sakoso awon kuki",
+  "sakoso iyonda",
+  "awon eto kuki",
+  "awon eto asiri",
+  "awon asayan miiran",
+  "fi awon alaye han",
+  "atojo awon alabaasisepo",
+  "mo fe yan",
+  "=awon eto",
+  "=awon aayo",
+  "=awon asayan",
+  "=se adani",
+  "=awon alaye",
+  "=sakoso"
+ ],
+ "confirm": [
+  "fi awon aayo pamo",
+  "fi awon eto pamo",
+  "fi yiyan mi pamo",
+  "fi pamo ki o si pa",
+  "jerii si yiyan mi",
+  "jerii si awon asayan",
+  "lo awon eto",
+  "fi awon ayipada pamo",
+  "=fi pamo",
+  "=jerii",
+  "=ti pari"
+ ],
+ "fallbackReject": [
+  "ko",
+  "=rara",
+  "=rara o se",
+  "=mi o gba"
+ ],
+ "rejectButton": [
+  "=ko",
+  "=ko gbogbo",
+  "=rara",
+  "=pa"
+ ],
+ "expandSection": [
+  "awon ete pataki",
+  "awon eya pataki"
+ ],
+ "anchor": [
+  "a n lo awon kuki",
+  "oju iwe yii n lo awon kuki",
+  "awa ati awon alabaasisepo wa",
+  "asiri re",
+  "ife to bofin mu",
+  "atojo awon alabaasisepo",
+  "iyonda re",
+  "awon alabaasisepo wa",
+  "ipolowo ti a se fun eni",
+  "ilana kuki"
+ ],
+ "bareAnchor": [
+  "kuki"
+ ],
+ "strongAnchor": [
+  "awon kuki to se pataki",
+  "awon kuki ise",
+  "awon kuki isiro",
+  "awon kuki ipolowo",
+  "awon kuki tita",
+  "ife to bofin mu",
+  "atojo awon alabaasisepo",
+  "awon alabaasisepo wa",
+  "o maa n sise nigba gbogbo",
+  "awon eto kuki"
+ ],
+ "neverClick": [
+  "foruko sile",
+  "se iforukosile",
+  "ra",
+  "san",
+  "sanwo",
+  "wole",
+  "si akoole",
+  "darapo",
+  "setore",
+  "laisi ipolowo",
+  "losoosu",
+  "lodoodun",
+  "premium",
+  "pase"
+ ],
+ "acceptGuard": [
+  "gba gbogbo re",
+  "gba gbogbo won",
+  "gba gbogbo",
+  "gba gbogbo kuki",
+  "gba kuki",
+  "gba ki o si pa",
+  "gba ki o si tesiwaju",
+  "mo gba",
+  "mo gba gbogbo re",
+  "bee ni mo gba",
+  "o dara mo ti gbo",
+  "=gba",
+  "=mo gba",
+  "=o dara",
+  "=bee ni",
+  "=mo ti gbo",
+  "=tesiwaju",
+  "=gbogbo"
+ ],
+ "acceptWords": [
+  "gba",
+  "mo gba",
+  "iyonda"
+ ],
+ "switchEssential": [
+  "se pataki",
+  "to se pataki",
+  "pondandan",
+  "o maa n sise nigba gbogbo",
+  "nigba gbogbo ni o wa",
+  "a ko le pa a",
+  "ki oju iwe le sise"
+ ],
+ "switchNonEssential": [
+  "ko se pataki",
+  "asayan",
+  "afikun",
+  "ko pondandan"
+ ],
+ "switchKeepOn": [
+  "ma ta",
+  "ma pin",
+  "ma to eyin",
+  "ranti yiyan mi",
+  "maa wa ni iwole",
+  "ma se fihan mo"
+ ],
+ "adsPurpose": [
+  "ipolowo",
+  "tita",
+  "ifojusun",
+  "sise fun eni",
+  "akosile eni",
+  "ikanni awujo"
+ ],
+ "statsPurpose": [
+  "isiro",
+  "itupale",
+  "wiwon",
+  "awon oluworan",
+  "ise sise",
+  "data lilo",
+  "awon alejo",
+  "imudara",
+  "iwadii"
+ ],
+ "topLevelWords": [
+  "gbogbo",
+  "nikan",
+  "pataki",
+  "kuki"
+ ],
+ "cookieContext": [
+  "a n lo",
+  "n lo",
+  "gba",
+  "iyonda",
+  "asiri",
+  "ilana",
+  "eto",
+  "alabaasisepo",
+  "ipolowo",
+  "data"
+ ],
+ "sensitiveScreen": [
+  "nomba kaadi",
+  "kaadi iraja",
+  "ojo ipari",
+  "kodu aabo",
+  "cvv",
+  "cvc",
+  "iban",
+  "nomba akoole",
+  "alaye isanwo",
+  "san bayii"
+ ]
+}

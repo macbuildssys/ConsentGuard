@@ -1,0 +1,64 @@
+# isiZulu. Draft: a native speaker should check it before release.
+META = {"code": "zu", "name": "isiZulu", "status": "draft"}
+CONJ = ["na"]
+PACK = {
+    "reject": [
+        "yenqaba konke", "yenqaba onke", "yenqaba wonke", "yenqaba onke amakhukhi", "yenqaba amakhukhi",
+        "qhubeka ngaphandle kokuvuma", "ungavumi", "angivumi", "ngiyenqaba", "yeka imvume", "cha ngiyabonga",
+        "vala konke", "vimbela konke", "yenqaba bese uvala",
+        "=yenqaba", "=cha", "=angivumi", "=ngiyenqaba", "=ungavumi",
+    ],
+    "necessary": [
+        "okudingekayo kuphela", "amakhukhi adingekayo kuphela", "okubalulekile kuphela", "amakhukhi abalulekile kuphela",
+        "vuma okudingekayo kuphela", "vuma amakhukhi adingekayo kuphela", "qhubeka nokudingekayo kuphela",
+        "=amakhukhi adingekayo", "=okudingekayo", "=okubalulekile", "=amakhukhi abalulekile",
+    ],
+    "manage": [
+        "lawula izintandokazi", "lawula izinketho", "lawula amakhukhi", "lawula imvume", "izilungiselelo zamakhukhi",
+        "izilungiselelo zobumfihlo", "izinketho ezengeziwe", "izinketho eziningi", "bonisa imininingwane",
+        "uhlu lwabalingani", "izinhloso nabalingani", "ngifuna ukukhetha",
+        "=izilungiselelo", "=izintandokazi", "=izinketho", "=lungisa", "=imininingwane", "=lawula",
+    ],
+    "confirm": [
+        "londoloza izintandokazi", "londoloza izilungiselelo", "londoloza ukukhetha", "londoloza ukukhetha kwami",
+        "londoloza uvale", "qinisekisa ukukhetha", "qinisekisa ukukhetha kwami", "qinisekisa izintandokazi",
+        "sebenzisa izilungiselelo", "londoloza izinguquko", "vuma ukukhetha",
+        "=londoloza", "=qinisekisa", "=kwenziwe",
+    ],
+    "fallbackReject": ["yenqaba", "=cha", "=cha ngiyabonga", "=angivumi"],
+    "rejectButton": ["=yenqaba", "=yenqaba konke", "=cha", "=vala"],
+    "expandSection": ["izinhloso ezikhethekile", "izici ezikhethekile"],
+    "anchor": [
+        "sisebenzisa amakhukhi", "le webhusayithi isebenzisa amakhukhi", "thina nabalingani bethu", "ubumfihlo bakho",
+        "isithakazelo esisemthethweni", "uhlu lwabalingani", "imvume yakho", "abalingani bethu", "izikhangiso ezenziwe ngokwezifiso",
+        "inqubomgomo yamakhukhi", "ubuchwepheshe bokulandela",
+    ],
+    "bareAnchor": ["amakhukhi"],
+    "strongAnchor": [
+        "amakhukhi adingekayo", "amakhukhi abalulekile", "amakhukhi okusebenza", "amakhukhi amanani", "amakhukhi okukhangisa",
+        "isithakazelo esisemthethweni", "uhlu lwabalingani", "abalingani bethu", "njalo kuyasebenza", "izintandokazi zamakhukhi",
+        "izilungiselelo zamakhukhi",
+    ],
+    "neverClick": [
+        "ubhalisele", "ukubhalisa", "thenga", "khokha", "inkokhelo", "ngena", "bhalisa", "vula i-akhawunti",
+        "joyina", "uzame mahhala", "nikela", "ngaphandle kwezikhangiso", "ngenyanga", "ngonyaka", "i-premium",
+    ],
+    "acceptGuard": [
+        "yamukela konke", "yamukela onke", "yamukela wonke", "yamukela onke amakhukhi", "yamukela amakhukhi",
+        "vumela konke", "vumela onke", "yamukela uvale", "yamukela uqhubeke", "ngiyavuma", "ngiyavuma konke",
+        "yebo ngiyavuma", "kulungile ngiyaqonda",
+        "=yamukela", "=vumela", "=ngiyavuma", "=kulungile", "=yebo", "=ngiyaqonda", "=qhubeka", "=konke",
+    ],
+    "acceptWords": ["yamukela", "yamuk*", "ngiyavuma", "vuma", "vumela", "imvume"],
+    "switchEssential": [
+        "kudingekile", "okudingekayo", "adingekayo", "okubalulekile", "abalulekile", "njalo kuyasebenza",
+        "njalo kuvuliwe", "kuyadingeka", "ayikwazi ukucishwa", "ukuze iwebhusayithi isebenze",
+    ],
+    "switchNonEssential": ["akudingekile", "akubalulekile", "okungakhethwa", "okungeziwe", "okungadingekile", "azidingekile"],
+    "switchKeepOn": ["ungathengisi", "ungabelani", "ungalandeli", "khumbula ukukhetha kwami", "hlala ungene", "ungabonisi futhi"],
+    "adsPurpose": ["isikhangiso", "izikhangiso", "ukumaketha", "ukuqondisa", "ukwenza ngokwezifiso", "iphrofayili", "imithombo yezokuxhumana"],
+    "statsPurpose": ["izibalo", "ukuhlaziya", "isilinganiso", "izethameli", "ukusebenza", "idatha yokusetshenziswa", "izivakashi", "ukuthuthukisa", "ucwaningo"],
+    "topLevelWords": ["konke", "onke", "wonke", "kuphela", "adingekayo", "okudingekayo", "abalulekile", "amakhukhi"],
+    "cookieContext": ["sisebenzisa", "isebenzisa", "yamukela", "imvume", "ubumfihlo", "inqubomgomo", "izilungiselelo", "abalingani", "izikhangiso", "idatha"],
+    "sensitiveScreen": ["inombolo yekhadi", "ikhadi lesikweletu", "usuku lokuphelelwa", "ikhodi yokuphepha", "cvv", "cvc", "iban", "inombolo ye-akhawunti", "imininingwane yenkokhelo", "khokha manje"],
+}

@@ -1,0 +1,31 @@
+# Igbo. Draft: a native speaker should check it before release. Dots and tone marks are ignored when matching.
+META = {"code": "ig", "name": "Igbo", "status": "draft"}
+CONJ = ["na"]
+PACK = {
+    "reject": ["jụ ha niile", "jụ ihe niile", "jụ kuki niile", "jụ kuki", "gaa n'ihu na-enweghị ikwenye", "ekwena", "anaghị m ekwenye", "wepụ ikike", "mba daalụ", "gbanyụọ niile", "gbochie niile", "jụ ma mechie",
+               "=jụ", "=mba", "=anaghị m ekwenye", "=ekwena"],
+    "necessary": ["naanị ndị dị mkpa", "naanị kuki ndị dị mkpa", "naanị ndị a chọrọ", "nabata naanị ndị dị mkpa", "gaa n'ihu na ndị dị mkpa naanị",
+                  "=kuki ndị dị mkpa", "=ndị dị mkpa", "=naanị ndị dị mkpa"],
+    "manage": ["jikwaa nhọrọ", "jikwaa ihe masịrị gị", "jikwaa kuki", "jikwaa ikike", "ntọala kuki", "ntọala nzuzo", "nhọrọ ndị ọzọ", "gosi nkọwa", "ndepụta ndị mmekọ", "achọrọ m ịhọrọ",
+               "=ntọala", "=nhọrọ", "=hazie", "=nkọwa", "=jikwaa", "=nhọrọ ndị ọzọ"],
+    "confirm": ["chekwaa ihe masịrị gị", "chekwaa ntọala", "chekwaa nhọrọ m", "chekwaa mechie", "kwado nhọrọ m", "kwado nhọrọ", "tinye ntọala", "chekwaa mgbanwe",
+                "=chekwaa", "=kwado", "=emechaala"],
+    "fallbackReject": ["jụ", "=mba", "=mba daalụ", "=ekwena"],
+    "rejectButton": ["=jụ", "=jụ ihe niile", "=mba", "=gbanyụọ"],
+    "expandSection": ["ebumnuche pụrụ iche", "atụmatụ pụrụ iche"],
+    "anchor": ["anyị na-eji kuki", "weebụsaịtị a na-eji kuki", "anyị na ndị mmekọ anyị", "nzuzo gị", "mmasị ziri ezi", "ndepụta ndị mmekọ", "nkwenye gị", "ndị mmekọ anyị", "mgbasa ozi nke e mere maka gị", "iwu kuki"],
+    "bareAnchor": ["kuki"],
+    "strongAnchor": ["kuki ndị dị mkpa", "kuki ọrụ", "kuki ọnụ ọgụgụ", "kuki mgbasa ozi", "kuki ahịa", "mmasị ziri ezi", "ndepụta ndị mmekọ", "ndị mmekọ anyị", "na-arụ ọrụ mgbe niile", "ntọala kuki"],
+    "neverClick": ["debanye aha", "ịdebanye aha", "zụta", "kwụọ ụgwọ", "ịkwụ ụgwọ", "banye", "mepee akaụntụ", "sonye", "nye onyinye", "na-enweghị mgbasa ozi", "kwa ọnwa", "kwa afọ", "premium", "nye iwu"],
+    "acceptGuard": ["nabata niile", "nabata ihe niile", "nabata kuki niile", "nabata kuki", "kwe ka niile", "nabata ma mechie", "nabata ma gaa n'ihu", "ekwenyere m", "ekwenyere m niile", "ee ekwenyere m", "ọ dị mma aghọtara m",
+                    "=nabata", "=kwe", "=ekwenyere m", "=ọ dị mma", "=ee", "=aghọtara m", "=gaa n'ihu", "=niile"],
+    "acceptWords": ["nabata", "ekwenyere", "ikike", "kwe"],
+    "switchEssential": ["dị mkpa", "ndị dị mkpa", "a chọrọ", "na-arụ ọrụ mgbe niile", "mgbe niile ka ọ na-enwe", "enweghị ike imechi ya", "ka weebụsaịtị rụọ ọrụ"],
+    "switchNonEssential": ["adịghị mkpa", "nhọrọ", "mgbakwunye", "achọghị"],
+    "switchKeepOn": ["ere ere", "ekesala", "elegharị anya", "cheta nhọrọ m", "nọgide n'ime", "egosila ọzọ"],
+    "adsPurpose": ["mgbasa ozi", "ahịa", "ebumnuche", "ime nke onwe", "profaịlụ", "mgbasa ozi mmekọrịta"],
+    "statsPurpose": ["ọnụ ọgụgụ", "nyocha", "tụọ", "ndị na-ege ntị", "arụmọrụ", "data ojiji", "ndị ọbịa", "imeziwanye", "nyocha ọmụmụ"],
+    "topLevelWords": ["niile", "naanị", "mkpa", "kuki"],
+    "cookieContext": ["anyị na-eji", "na-eji", "nabata", "nkwenye", "nzuzo", "iwu", "ntọala", "ndị mmekọ", "mgbasa ozi", "data"],
+    "sensitiveScreen": ["nọmba kaadị", "kaadị ụgwọ", "ụbọchị njedebe", "koodu nchekwa", "cvv", "cvc", "iban", "nọmba akaụntụ", "nkọwa ịkwụ ụgwọ", "kwụọ ugbu a"],
+}

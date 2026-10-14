@@ -37,6 +37,14 @@ android {
         buildConfig = true
     }
 
+    /* Keeps Google's signed dependency list out of the APK. It is not needed
+       here, and leaving it out is what lets F-Droid and anyone else rebuild
+       the APK and get the same bytes. */
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
     if (hasKeystore) {
         signingConfigs {
             create("release") {
