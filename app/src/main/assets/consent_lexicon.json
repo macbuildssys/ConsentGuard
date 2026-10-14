@@ -356,5 +356,28 @@
     "usage data",
     "improve our",
     "performance"
+  ],
+  "sensitiveScreenTextPatterns": [
+    "cvc",
+    "cvv",
+    "iban",
+    "pay now",
+    "sort code",
+    "cardholder",
+    "debit card",
+    "card holder",
+    "card number",
+    "credit card",
+    "expiry date",
+    "place order",
+    "name on card",
+    "security code",
+    "account number",
+    "enter your pin",
+    "payment method",
+    "routing number",
+    "expiration date",
+    "payment details",
+    "complete purchase"
   ]
 }

@@ -1,0 +1,225 @@
+{
+ "language": "ig",
+ "name": "Igbo",
+ "status": "draft",
+ "enabled": true,
+ "reject": [
+  "ju ha niile",
+  "ju ihe niile",
+  "ju kuki niile",
+  "ju kuki",
+  "gaa nihu na enweghi ikwenye",
+  "ekwena",
+  "anaghi m ekwenye",
+  "wepu ikike",
+  "mba daalu",
+  "gbanyuo niile",
+  "gbochie niile",
+  "ju ma mechie",
+  "=ju",
+  "=mba",
+  "=anaghi m ekwenye",
+  "=ekwena"
+ ],
+ "necessary": [
+  "naani ndi di mkpa",
+  "naani kuki ndi di mkpa",
+  "naani ndi a choro",
+  "nabata naani ndi di mkpa",
+  "gaa nihu na ndi di mkpa naani",
+  "gaa nihu and ndi di mkpa naani",
+  "=kuki ndi di mkpa",
+  "=ndi di mkpa",
+  "=naani ndi di mkpa"
+ ],
+ "manage": [
+  "jikwaa nhoro",
+  "jikwaa ihe masiri gi",
+  "jikwaa kuki",
+  "jikwaa ikike",
+  "ntoala kuki",
+  "ntoala nzuzo",
+  "nhoro ndi ozo",
+  "gosi nkowa",
+  "ndeputa ndi mmeko",
+  "achoro m ihoro",
+  "=ntoala",
+  "=nhoro",
+  "=hazie",
+  "=nkowa",
+  "=jikwaa",
+  "=nhoro ndi ozo"
+ ],
+ "confirm": [
+  "chekwaa ihe masiri gi",
+  "chekwaa ntoala",
+  "chekwaa nhoro m",
+  "chekwaa mechie",
+  "kwado nhoro m",
+  "kwado nhoro",
+  "tinye ntoala",
+  "chekwaa mgbanwe",
+  "=chekwaa",
+  "=kwado",
+  "=emechaala"
+ ],
+ "fallbackReject": [
+  "ju",
+  "=mba",
+  "=mba daalu",
+  "=ekwena"
+ ],
+ "rejectButton": [
+  "=ju",
+  "=ju ihe niile",
+  "=mba",
+  "=gbanyuo"
+ ],
+ "expandSection": [
+  "ebumnuche puru iche",
+  "atumatu puru iche"
+ ],
+ "anchor": [
+  "anyi na eji kuki",
+  "weebusaiti a na eji kuki",
+  "anyi na ndi mmeko anyi",
+  "anyi and ndi mmeko anyi",
+  "nzuzo gi",
+  "mmasi ziri ezi",
+  "ndeputa ndi mmeko",
+  "nkwenye gi",
+  "ndi mmeko anyi",
+  "mgbasa ozi nke e mere maka gi",
+  "iwu kuki"
+ ],
+ "bareAnchor": [
+  "kuki"
+ ],
+ "strongAnchor": [
+  "kuki ndi di mkpa",
+  "kuki oru",
+  "kuki onu ogugu",
+  "kuki mgbasa ozi",
+  "kuki ahia",
+  "mmasi ziri ezi",
+  "ndeputa ndi mmeko",
+  "ndi mmeko anyi",
+  "na aru oru mgbe niile",
+  "ntoala kuki"
+ ],
+ "neverClick": [
+  "debanye aha",
+  "idebanye aha",
+  "zuta",
+  "kwuo ugwo",
+  "ikwu ugwo",
+  "banye",
+  "mepee akauntu",
+  "sonye",
+  "nye onyinye",
+  "na enweghi mgbasa ozi",
+  "kwa onwa",
+  "kwa afo",
+  "premium",
+  "nye iwu"
+ ],
+ "acceptGuard": [
+  "nabata niile",
+  "nabata ihe niile",
+  "nabata kuki niile",
+  "nabata kuki",
+  "kwe ka niile",
+  "nabata ma mechie",
+  "nabata ma gaa nihu",
+  "ekwenyere m",
+  "ekwenyere m niile",
+  "ee ekwenyere m",
+  "o di mma aghotara m",
+  "=nabata",
+  "=kwe",
+  "=ekwenyere m",
+  "=o di mma",
+  "=ee",
+  "=aghotara m",
+  "=gaa nihu",
+  "=niile"
+ ],
+ "acceptWords": [
+  "nabata",
+  "ekwenyere",
+  "ikike",
+  "kwe"
+ ],
+ "switchEssential": [
+  "di mkpa",
+  "ndi di mkpa",
+  "a choro",
+  "na aru oru mgbe niile",
+  "mgbe niile ka o na enwe",
+  "enweghi ike imechi ya",
+  "ka weebusaiti ruo oru"
+ ],
+ "switchNonEssential": [
+  "adighi mkpa",
+  "nhoro",
+  "mgbakwunye",
+  "achoghi"
+ ],
+ "switchKeepOn": [
+  "ere ere",
+  "ekesala",
+  "eleghari anya",
+  "cheta nhoro m",
+  "nogide nime",
+  "egosila ozo"
+ ],
+ "adsPurpose": [
+  "mgbasa ozi",
+  "ahia",
+  "ebumnuche",
+  "ime nke onwe",
+  "profailu",
+  "mgbasa ozi mmekorita"
+ ],
+ "statsPurpose": [
+  "onu ogugu",
+  "nyocha",
+  "tuo",
+  "ndi na ege nti",
+  "arumoru",
+  "data ojiji",
+  "ndi obia",
+  "imeziwanye",
+  "nyocha omumu"
+ ],
+ "topLevelWords": [
+  "niile",
+  "naani",
+  "mkpa",
+  "kuki"
+ ],
+ "cookieContext": [
+  "anyi na eji",
+  "na eji",
+  "nabata",
+  "nkwenye",
+  "nzuzo",
+  "iwu",
+  "ntoala",
+  "ndi mmeko",
+  "mgbasa ozi",
+  "data"
+ ],
+ "sensitiveScreen": [
+  "nomba kaadi",
+  "kaadi ugwo",
+  "ubochi njedebe",
+  "koodu nchekwa",
+  "cvv",
+  "cvc",
+  "iban",
+  "nomba akauntu",
+  "nkowa ikwu ugwo",
+  "kwuo ugbu a"
+ ]
+}
