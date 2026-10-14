@@ -10,6 +10,10 @@ ConsentGuard tries to reject cookie and tracking choices for you and to switch o
 
 When it sees a cookie or tracking prompt, it taps a reject option, or a necessary only option, or it opens the settings and switches optional choices off one by one. When it is working through switches, it then presses Save or Confirm if the site asks for that.
 
+## Languages
+
+Several language packs are drafts that no native speaker has checked yet. See [languages](LANGUAGES.md). On those, ConsentGuard may miss a banner. A page translated by a browser can also change after ConsentGuard has looked, so it may need a second moment to settle.
+
 ## What it does not promise
 
 - That every optional choice on every banner is switched off.

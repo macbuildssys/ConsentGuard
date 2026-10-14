@@ -1,0 +1,110 @@
+# Italian.
+META = {"code": "it", "name": "Italian", "status": "reviewed"}
+CONJ = ["e", "ed"]
+PACK = {
+    "reject": [
+        "rifiuta tutto", "rifiuta tutti", "rifiuta tutti i cookie", "rifiuta i cookie", "rifiuta i cookie opzionali",
+        "rifiuta i cookie non necessari", "continua senza accettare", "prosegui senza accettare",
+        "continua senza acconsentire", "non accetto", "non accettare", "non acconsento", "non sono d accordo",
+        "revoca il consenso", "ritira il consenso", "no grazie", "disattiva tutto", "blocca tutto",
+        "rifiuta e chiudi", "rifiuta e continua", "rifiuta il tracciamento",
+        "=rifiuta", "=rifiutare", "=nega", "=no", "=non acconsento", "=mi oppongo",
+    ],
+    "necessary": [
+        "solo necessari", "solo i necessari", "solo cookie necessari", "solo i cookie necessari", "solo essenziali",
+        "solo i cookie essenziali", "solo tecnici", "solo cookie tecnici", "accetta solo i necessari",
+        "accetta solo i cookie necessari", "accetta solo gli essenziali", "accetta solo il necessario",
+        "consenti solo i necessari", "continua con i soli necessari", "solo il necessario", "solo l essenziale",
+        "salva solo i necessari", "il minimo indispensabile",
+        "=cookie necessari", "=cookie essenziali", "=necessari", "=essenziali", "=solo necessari",
+        "=solo essenziali", "=solo tecnici",
+    ],
+    "manage": [
+        "gestisci preferenze", "gestisci le preferenze", "gestisci opzioni", "gestisci le opzioni",
+        "gestisci cookie", "gestisci i cookie", "gestisci il consenso", "impostazioni dei cookie",
+        "impostazioni cookie", "configura i cookie", "personalizza i cookie", "personalizza le opzioni",
+        "impostazioni sulla privacy", "preferenze sulla privacy", "altre opzioni", "più opzioni",
+        "opzioni aggiuntive", "mostra dettagli", "mostra i dettagli", "visualizza dettagli", "mostra le finalità",
+        "mostra i partner", "elenco dei partner", "elenco dei fornitori", "finalità e partner",
+        "scegli i cookie", "centro preferenze", "centro per la privacy", "voglio scegliere",
+        "=impostazioni", "=preferenze", "=opzioni", "=personalizza", "=configura", "=dettagli", "=gestisci",
+        "=più opzioni", "=altre opzioni",
+    ],
+    "confirm": [
+        "salva preferenze", "salva le preferenze", "salva impostazioni", "salva le impostazioni", "salva le mie scelte",
+        "salva scelte", "salva selezione", "salva e chiudi", "salva e continua", "salva ed esci",
+        "conferma le mie scelte", "conferma scelte", "conferma selezione", "conferma la selezione",
+        "conferma preferenze", "conferma e chiudi", "applica impostazioni", "applica le modifiche",
+        "accetta selezione", "accetta la selezione", "consenti selezione", "salva modifiche",
+        "=salva", "=conferma", "=applica", "=fatto", "=salva selezione", "=conferma selezione",
+    ],
+    "fallbackReject": ["rifiuta", "rifiutare", "=no", "=no grazie", "=non accetto"],
+    "rejectButton": ["=rifiuta", "=rifiuta tutto", "=nega", "=no", "=disattiva"],
+    "expandSection": ["finalità speciali", "funzionalità speciali", "funzioni speciali"],
+    "anchor": [
+        "utilizziamo i cookie", "usiamo i cookie", "questo sito utilizza i cookie", "questo sito usa i cookie",
+        "noi e i nostri partner", "la tua privacy", "la vostra privacy", "legittimo interesse", "interesse legittimo",
+        "elenco dei partner", "impostazioni sulla privacy", "il tuo consenso", "i nostri partner",
+        "i nostri fornitori", "fornitori terzi", "annunci personalizzati", "archiviare e o accedere a informazioni",
+        "finalità del trattamento", "cookie policy", "informativa sui cookie", "tecnologie di tracciamento",
+        "proseguendo nella navigazione", "continuando a navigare",
+    ],
+    "bareAnchor": ["cookie"],
+    "strongAnchor": [
+        "strettamente necessari", "cookie necessari", "cookie essenziali", "cookie funzionali",
+        "cookie di prestazione", "cookie statistici", "cookie analitici", "cookie di marketing",
+        "cookie pubblicitari", "annunci personalizzati", "legittimo interesse", "elenco dei partner",
+        "i nostri partner", "sempre attivo", "sempre attivi", "finalità del trattamento", "preferenze dei cookie",
+        "impostazioni dei cookie", "categorie di cookie", "finalità speciali", "tecnologie di tracciamento",
+    ],
+    "neverClick": [
+        "abbonati", "abbonamento", "acquista", "compra", "paga", "pagamento", "accedi", "login", "registrati",
+        "crea un account", "diventa membro", "prova gratuita", "prova gratis", "dona", "donazione", "sostienici",
+        "senza pubblicità", "rimuovi la pubblicità", "al mese", "all anno", "mensile", "annuale", "premium",
+        "ordina",
+    ],
+    "acceptGuard": [
+        "accetta tutto", "accetta tutti", "accetta tutti i cookie", "accetta i cookie", "consenti tutto",
+        "consenti tutti", "consenti tutti i cookie", "consenti i cookie", "accetta e chiudi", "accetta e continua",
+        "accetta e prosegui", "accetto tutto", "=accetto", "=sono d accordo", "=acconsento", "sì accetto",
+        "ok ho capito", "accetta le impostazioni consigliate",
+        "=accetta", "=consenti", "=acconsento", "=d accordo", "=ok", "=okay", "=sì", "=ho capito", "=continua",
+        "=attiva", "=tutto",
+    ],
+    "acceptWords": ["accett*", "consent*", "acconsent*", "permett*", "autoriz*", "accordo"],
+    "switchEssential": [
+        "strettamente necessari", "strettamente necessario", "necessario", "necessari", "necessaria", "essenziale",
+        "essenziali", "obbligatorio", "obbligatori", "sempre attivo", "sempre attivi", "richiesto",
+        "tecnicamente necessario", "non può essere disattivato", "non possono essere disattivati",
+        "indispensabile", "per il funzionamento del sito", "funzionamento del sito",
+    ],
+    "switchNonEssential": [
+        "non essenziale", "non essenziali", "non necessario", "non necessari", "non necessaria", "superfluo",
+        "facoltativo", "facoltativi", "opzionale", "opzionali", "aggiuntivo", "aggiuntivi",
+    ],
+    "switchKeepOn": [
+        "non vendere", "non condividere", "non tracciare", "ricorda la mia scelta", "ricorda la mia decisione",
+        "resta connesso", "non mostrare più", "non chiedere più",
+    ],
+    "adsPurpose": [
+        "pubblicit", "annunci", "marketing", "targeting", "personalizz", "remarketing", "basata sugli interessi",
+        "profil", "social media", "selezione degli annunci",
+    ],
+    "statsPurpose": [
+        "statistic", "analisi", "analitic", "misurazione", "pubblico", "prestazioni", "dati di utilizzo",
+        "visitatori", "traffico", "migliorare", "ricerca",
+    ],
+    "topLevelWords": [
+        "tutto", "tutti", "tutte", "solo", "soltanto", "necessari", "necessario", "essenziali", "essenziale",
+        "cookie", "opzionali", "tracciamento", "tecnici",
+    ],
+    "cookieContext": [
+        "utilizziamo", "usiamo", "utilizza i cookie", "usa i cookie", "accett", "consens", "privacy", "policy",
+        "impostazioni", "preferenze", "partner", "personalizz", "tracciamento", "pubblicit", "dati",
+    ],
+    "sensitiveScreen": [
+        "numero della carta", "numero di carta", "carta di credito", "carta di debito", "titolare della carta",
+        "data di scadenza", "codice di sicurezza", "cvv", "cvc", "iban", "numero di conto",
+        "dati di pagamento", "metodo di pagamento", "paga ora",
+    ],
+}

@@ -484,6 +484,12 @@ STATS_PURPOSE = L("""measure|measurement|audience|analytic|performance|statistic
 site usage|visitor|traffic|improve our|research""")
 
 
+SENSITIVE_SCREEN = L("""card number|credit card number|credit card|debit card|card holder|cardholder|name on card|expiry date|
+expiration date|security code|cvv|cvc|iban|account number|sort code|routing number|
+enter your pin|payment details|payment method|pay now|place order|complete purchase""")
+
+
+
 def build_lexicon():
     lex = {
         "anchorTextPatterns": ANCHOR,
@@ -495,6 +501,7 @@ def build_lexicon():
         "switchKeepOnTextPatterns": SWITCH_KEEP_ON,
         "adsPurposeTextPatterns": ADS_PURPOSE,
         "statsPurposeTextPatterns": STATS_PURPOSE,
+        "sensitiveScreenTextPatterns": SENSITIVE_SCREEN,
     }
     return {k: prune(v) for k, v in lex.items()}
 
