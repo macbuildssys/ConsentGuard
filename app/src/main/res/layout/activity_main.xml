@@ -28,13 +28,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Choose what to reject" />
+            android:text="Apps to skip" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#E3EEE3"
+            android:padding="14dp"
+            android:textSize="14sp"
+            android:textColor="#1B1B1B"
+            android:text="Banking and payment apps are never monitored by ConsentGuard. It checks the app name first and does not read their screens. Tap Apps to skip to see the list on your phone. It also has no internet permission, so it cannot send anything off your phone." />
 
         <TextView
             android:id="@+id/bestEffortText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:textSize="12sp"
             android:text="@string/best_effort_notice" />
 

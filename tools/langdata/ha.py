@@ -1,0 +1,31 @@
+# Hausa. Draft: a native speaker should check it before release.
+META = {"code": "ha", "name": "Hausa", "status": "draft"}
+CONJ = ["da"]
+PACK = {
+    "reject": ["ƙi duka", "ƙi dukka", "ƙi duk kukis", "ƙi kukis", "ci gaba ba tare da karɓa ba", "ba na yarda", "janye yarda", "a'a na gode", "kashe duka", "toshe duka", "ƙi kuma rufe",
+               "=ƙi", "=a'a", "=ba na yarda", "=ƙi duka"],
+    "necessary": ["masu mahimmanci kawai", "kukis masu mahimmanci kawai", "kukis ɗin da ake buƙata kawai", "karɓi masu mahimmanci kawai", "ci gaba da masu mahimmanci kawai",
+                  "=kukis masu mahimmanci", "=masu mahimmanci", "=masu mahimmanci kawai"],
+    "manage": ["sarrafa zaɓuka", "sarrafa abubuwan da kake so", "sarrafa kukis", "sarrafa yarda", "saitunan kukis", "saitunan sirri", "ƙarin zaɓuka", "nuna cikakkun bayanai", "jerin abokan hulɗa", "ina so in zaɓa",
+               "=saituna", "=zaɓuka", "=keɓancewa", "=cikakkun bayanai", "=sarrafa", "=ƙarin zaɓuka"],
+    "confirm": ["ajiye abubuwan da kake so", "ajiye saituna", "ajiye zaɓina", "ajiye ka rufe", "tabbatar da zaɓina", "tabbatar da zaɓuka", "aiwatar da saituna", "ajiye canje-canje",
+                "=ajiye", "=tabbatar", "=an gama"],
+    "fallbackReject": ["ƙi", "=a'a", "=a'a na gode", "=ba na yarda"],
+    "rejectButton": ["=ƙi", "=ƙi duka", "=a'a", "=kashe"],
+    "expandSection": ["dalilai na musamman", "siffofi na musamman"],
+    "anchor": ["muna amfani da kukis", "wannan gidan yanar gizon yana amfani da kukis", "mu da abokan hulɗarmu", "sirrinka", "sha'awa ta halal", "jerin abokan hulɗa", "yardarka", "abokan hulɗarmu", "tallace-tallace na musamman", "manufar kukis"],
+    "bareAnchor": ["kukis"],
+    "strongAnchor": ["kukis masu mahimmanci", "kukis na aiki", "kukis na ƙididdiga", "kukis na talla", "kukis na tallace-tallace", "sha'awa ta halal", "jerin abokan hulɗa", "abokan hulɗarmu", "koyaushe yana aiki", "saitunan kukis"],
+    "neverClick": ["yi rajista", "biyan kuɗi", "saya", "biya", "shiga", "buɗe asusu", "ba da gudummawa", "ba tare da talla ba", "a wata", "a shekara", "premium", "yi oda"],
+    "acceptGuard": ["karɓi duka", "karɓi dukka", "karɓi duk kukis", "karɓi kukis", "ba da izini ga duka", "karɓa ka rufe", "karɓa ka ci gaba", "=na yarda", "na yarda da duka", "eh na yarda", "to na gane",
+                    "=karɓa", "=karɓi", "=na yarda", "=to", "=eh", "=na gane", "=ci gaba", "=duka"],
+    "acceptWords": ["karɓ*", "karba*", "yarda", "na yarda", "izini"],
+    "switchEssential": ["mai mahimmanci", "masu mahimmanci", "wajibi", "koyaushe yana aiki", "koyaushe a kunne", "ba za a iya kashewa ba", "don gidan yanar gizo ya yi aiki"],
+    "switchNonEssential": ["ba mai mahimmanci ba", "ba masu mahimmanci ba", "na zaɓi", "ƙari", "ba a buƙata ba"],
+    "switchKeepOn": ["kada ka sayar", "kada ka raba", "kada ka bi diddigi", "tuna zaɓina", "ka ci gaba da shiga"],
+    "adsPurpose": ["talla", "tallace-tallace", "kasuwanci", "niyya", "keɓancewa", "bayanin martaba", "kafofin sada zumunta"],
+    "statsPurpose": ["ƙididdiga", "nazari", "aunawa", "masu kallo", "aiki", "bayanan amfani", "baƙi", "inganta", "bincike"],
+    "topLevelWords": ["duka", "dukka", "kawai", "mahimmanci", "kukis"],
+    "cookieContext": ["muna amfani", "yana amfani", "karɓi", "yarda", "sirri", "manufa", "saituna", "abokan hulɗa", "talla", "bayanai"],
+    "sensitiveScreen": ["lambar kati", "katin bashi", "ranar karewa", "lambar tsaro", "cvv", "cvc", "iban", "lambar asusu", "bayanan biyan kuɗi", "biya yanzu"],
+}

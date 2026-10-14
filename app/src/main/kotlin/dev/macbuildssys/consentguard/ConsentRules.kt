@@ -16,12 +16,50 @@ import org.json.JSONObject
    "Opt-out" and "opt out" end up identical. Phrase lists therefore only
    need one spelling of each phrase. */
 object ConsentText {
-    fun normalize(input: String): String {
+    /* Letters that translation tools and different keyboards write in more
+       than one way. Both the screen text and the phrase lists go through the
+       same folding, so the spelling on either side does not matter. Accents
+       and other combining marks are dropped (so "Zurückweisen" and
+       "Zuruckweisen" are the same word, and so are the Yoruba and Igbo words
+       written with or without their dots and tone marks), Arabic vowel marks
+       and the stretching dash are dropped, and a few look alike letters are
+       joined. Plain English text never goes through any of this. */
+    private val FOLD = mapOf(
+        '\u0671' to '\u0627', // Arabic alef wasla
+        '\u0649' to '\u064A', // Arabic alef maksura
+        '\u0199' to 'k', // Hausa hooked k
+        '\u0257' to 'd', // Hausa hooked d
+        '\u0253' to 'b', // Hausa hooked b
+        '\u01B4' to 'y' // Hausa hooked y
+    )
+
+    private fun hasNonAscii(input: String): Boolean {
+        for (c in input) if (c.code > 0x7F) return true
+        return false
+    }
+
+    private fun fold(input: String): String {
+        val decomposed = java.text.Normalizer.normalize(input, java.text.Normalizer.Form.NFD)
+        val out = StringBuilder(decomposed.length)
+        for (c in decomposed) {
+            val code = c.code
+            when {
+                code in 0x0300..0x036F -> {}
+                code in 0x064B..0x065F -> {}
+                code == 0x0640 -> {}
+                else -> out.append(FOLD[c] ?: c)
+            }
+        }
+        return java.text.Normalizer.normalize(out, java.text.Normalizer.Form.NFC)
+    }
+
+    fun normalize(rawInput: String): String {
+        val input = if (hasNonAscii(rawInput)) fold(rawInput) else rawInput
         val out = StringBuilder(input.length)
         var lastWasSpace = true
         for (raw in input) {
             when {
-                raw == '\'' || raw == '\u2019' || raw == '\u2018' || raw == '`' -> {
+                raw == '\'' || raw == '\u2019' || raw == '\u2018' || raw == '`' || raw == '\u02BC' -> {
                     // Apostrophes vanish so "don't" and "dont" are the same word.
                 }
                 raw == '&' -> {
@@ -90,6 +128,10 @@ class PatternList(patterns: List<String>) {
     }
 
     fun isEmpty(): Boolean = substrings.isEmpty() && exacts.isEmpty()
+
+    /* The phrases in the same written form the JSON files use, so a list can
+       be combined with another one (see the language packs). */
+    fun rawPatterns(): List<String> = substrings + exacts.map { "=$it" }
 
     /* A page shows the same short labels scan after scan, and a list with
        hundreds of phrases is slow to run against every one of them each
@@ -227,7 +269,22 @@ data class ConsentLexicon(
        "block third party cookies", "remember my choice"). Left as it is. */
     val switchKeepOnTextPatterns: PatternList,
     val adsPurposeTextPatterns: PatternList,
-    val statsPurposeTextPatterns: PatternList
+    val statsPurposeTextPatterns: PatternList,
+    /* Words that, in a button label, mark the button as one that deals with
+       everything at once ("all", "necessary", "only"), as opposed to a bare
+       "Reject" that belongs to one purpose in a long list. */
+    val topLevelWords: Set<String> = DEFAULT_TOP_LEVEL_WORDS,
+    /* Single words that make a label read as accept. A word ending in a star
+       is a beginning only ("akzept*" covers akzeptieren, akzeptiere). */
+    val acceptWords: List<String> = DEFAULT_ACCEPT_WORDS,
+    /* Anchor phrases too common to count on their own (the word cookie in
+       any language). They only count together with one of the context
+       words below. */
+    val contextualAnchors: List<String> = DEFAULT_CONTEXTUAL_ANCHORS,
+    val cookieContextWords: List<String> = COOKIE_CONTEXT_WORDS,
+    /* Wording of card, bank and payment entry screens. Nothing is tapped on
+       a screen that shows any of it. */
+    val sensitiveScreenTextPatterns: PatternList = PatternList.EMPTY
 ) {
     /* True when a switch label says the switch is required for the site to
        work, so it is left on. Two things cancel that. "Non essential" and
@@ -267,10 +324,18 @@ data class ConsentLexicon(
         if (!anchorTextPatterns.matches(text)) return false
         if (anchorTextPatterns.exacts.contains(text)) return true
         for (phrase in anchorTextPatterns.substrings) {
-            if (phrase != "cookie" && text.contains(phrase)) return true
+            if (phrase in contextualAnchors) continue
+            if (text.contains(phrase)) return true
         }
-        if (!text.contains("cookie")) return false
-        for (word in COOKIE_CONTEXT_WORDS) {
+        var hasContextual = false
+        for (phrase in contextualAnchors) {
+            if (text.contains(phrase)) {
+                hasContextual = true
+                break
+            }
+        }
+        if (!hasContextual) return false
+        for (word in cookieContextWords) {
             if (text.contains(word)) return true
         }
         return false
@@ -319,7 +384,13 @@ data class ConsentLexicon(
            appear in the text before a switch. */
         private val GENERIC_KEEP_ON_WORDS = setOf("block", "prevent", "protect", "restrict", "opt out")
 
-        private val COOKIE_CONTEXT_WORDS = listOf(
+        val DEFAULT_TOP_LEVEL_WORDS = setOf(
+            "all", "everything", "cookies", "necessary", "essential", "optional", "tracking", "only"
+        )
+        val DEFAULT_ACCEPT_WORDS = listOf("accept", "agree", "allow", "consent")
+        val DEFAULT_CONTEXTUAL_ANCHORS = listOf("cookie")
+
+        val COOKIE_CONTEXT_WORDS = listOf(
             "we use", "use cookies", "uses cookies", "using cookies", "accept", "consent",
             "polic", "setting", "preference", "privacy", "partner", "personalis",
             "personaliz", "track", "advertis", "data"
@@ -369,28 +440,80 @@ data class ConsentLexicon(
     }
 }
 
+/* Language packs. Every file in assets/lang is one language, with the same
+   kinds of phrase lists as the two main files. They are all read at the same
+   time and added to the English lists, because the text on a screen can be in
+   any language no matter what the phone is set to: a page translated by
+   Google Translate or by Firefox shows the translated words, a site shows its
+   own language, and a banner inside an app follows the app. Matching every
+   language at once is what makes all of those work.
+
+   A pack with "enabled": false is skipped. A pack that cannot be read is
+   skipped on its own and never stops the others. */
+private const val LANG_DIR = "lang"
+
+private fun Context.loadLanguagePacks(): List<JSONObject> {
+    val names = try {
+        assets.list(LANG_DIR)?.filter { it.endsWith(".json") }?.sorted()
+    } catch (e: Exception) {
+        null
+    } ?: return emptyList()
+    val packs = ArrayList<JSONObject>()
+    for (name in names) {
+        try {
+            val json = assets.open("$LANG_DIR/$name").bufferedReader().use { it.readText() }
+            val pack = JSONObject(json)
+            if (pack.optBoolean("enabled", true)) packs.add(pack)
+        } catch (e: Exception) {
+            // A broken pack is left out.
+        }
+    }
+    return packs
+}
+
+private fun List<JSONObject>.words(key: String): List<String> =
+    flatMap { it.optJSONArray(key).toStringList() }
+
+/* The rule that carries the plain wording lists. Its name stays english_wording
+   because that is what tools/build_english.py writes; the language packs are
+   added to it so there is still only one rule, and so one walk over the
+   screen, for all languages together. */
+private const val WORDING_RULE = "english_wording"
+private const val REJECT_BUTTON_RULE = "sourcepoint_style_reject_buttons"
+
 fun Context.loadConsentRules(): List<ConsentRule> {
     val json = assets.open("consent_rules.json").bufferedReader().use { it.readText() }
     val array = JSONArray(json)
+    val packs = loadLanguagePacks()
     val rules = mutableListOf<ConsentRule>()
 
     for (i in 0 until array.length()) {
         val obj = array.getJSONObject(i)
+        val name = obj.getString("name")
+        val isWording = name == WORDING_RULE
+        val isRejectButtons = name == REJECT_BUTTON_RULE
+
+        fun list(key: String, packKey: String?, merge: Boolean): PatternList {
+            val base = obj.optJSONArray(key).toStringList()
+            val extra = if (merge && packKey != null) packs.words(packKey) else emptyList()
+            return PatternList(base + extra)
+        }
+
         rules.add(
             ConsentRule(
-                name = obj.getString("name"),
+                name = name,
                 rejectResourceIds = obj.optJSONArray("rejectResourceIds").toStringList(),
-                rejectTextPatterns = obj.optJSONArray("rejectTextPatterns").toPatternList(),
+                rejectTextPatterns = list("rejectTextPatterns", "reject", isWording),
                 necessaryResourceIds = obj.optJSONArray("necessaryResourceIds").toStringList(),
-                necessaryTextPatterns = obj.optJSONArray("necessaryTextPatterns").toPatternList(),
+                necessaryTextPatterns = list("necessaryTextPatterns", "necessary", isWording),
                 manageResourceIds = obj.optJSONArray("manageResourceIds").toStringList(),
-                manageTextPatterns = obj.optJSONArray("manageTextPatterns").toPatternList(),
+                manageTextPatterns = list("manageTextPatterns", "manage", isWording),
                 toggleResourceIdPrefixes = obj.optJSONArray("toggleResourceIdPrefixes").toStringList(),
-                rejectButtonTextPatterns = obj.optJSONArray("rejectButtonTextPatterns").toPatternList(),
-                expandSectionTextPatterns = obj.optJSONArray("expandSectionTextPatterns").toPatternList(),
+                rejectButtonTextPatterns = list("rejectButtonTextPatterns", "rejectButton", isRejectButtons),
+                expandSectionTextPatterns = list("expandSectionTextPatterns", "expandSection", isRejectButtons),
                 confirmResourceIds = obj.optJSONArray("confirmResourceIds").toStringList(),
-                confirmTextPatterns = obj.optJSONArray("confirmTextPatterns").toPatternList(),
-                fallbackRejectTextPatterns = obj.optJSONArray("fallbackRejectTextPatterns").toPatternList()
+                confirmTextPatterns = list("confirmTextPatterns", "confirm", isWording),
+                fallbackRejectTextPatterns = list("fallbackRejectTextPatterns", "fallbackReject", isWording)
             )
         )
     }
@@ -402,25 +525,48 @@ fun Context.loadConsentLexicon(): ConsentLexicon {
     val json = assets.open("consent_lexicon.json").bufferedReader().use { it.readText() }
     val obj = JSONObject(json)
     val fallback = ConsentLexicon.DEFAULT
+    val packs = loadLanguagePacks()
 
     /* A missing or empty list in the file falls back to the built in
        wording for that one list, so a half edited file never leaves the
-       service without any anchor or any safety guard. */
-    fun listOrDefault(key: String, default: PatternList): PatternList {
-        val loaded = obj.optJSONArray(key).toPatternList()
-        return if (loaded.isEmpty()) default else loaded
+       service without any anchor or any safety guard. The language packs
+       are added on top of whichever of the two is used. */
+    fun listOrDefault(key: String, packKey: String, default: PatternList): PatternList {
+        val loaded = obj.optJSONArray(key).toStringList()
+        val base = if (loaded.isEmpty()) default.rawPatterns() else loaded
+        return PatternList(base + packs.words(packKey))
     }
 
+    fun normalizedWords(packKey: String): List<String> =
+        packs.words(packKey).map { ConsentText.normalize(it) }.filter { it.isNotEmpty() }
+
+    /* Words: the plain word lists keep a trailing star as it is, since it
+       marks a beginning only. */
+    val acceptWords = fallback.acceptWords + packs.words("acceptWords").map { raw ->
+        val star = raw.trim().endsWith("*")
+        val body = ConsentText.normalize(raw.trim().removeSuffix("*"))
+        if (star) "$body*" else body
+    }.filter { it.isNotEmpty() && it != "*" }
+
+    val bareAnchors = normalizedWords("bareAnchor")
+    val anchorBase = obj.optJSONArray("anchorTextPatterns").toStringList()
+        .ifEmpty { fallback.anchorTextPatterns.rawPatterns() }
+
     return ConsentLexicon(
-        anchorTextPatterns = listOrDefault("anchorTextPatterns", fallback.anchorTextPatterns),
-        strongAnchorTextPatterns = listOrDefault("strongAnchorTextPatterns", fallback.strongAnchorTextPatterns),
-        neverClickTextPatterns = listOrDefault("neverClickTextPatterns", fallback.neverClickTextPatterns),
-        acceptGuardTextPatterns = listOrDefault("acceptGuardTextPatterns", fallback.acceptGuardTextPatterns),
-        switchEssentialTextPatterns = listOrDefault("switchEssentialTextPatterns", fallback.switchEssentialTextPatterns),
-        switchNonEssentialTextPatterns = listOrDefault("switchNonEssentialTextPatterns", fallback.switchNonEssentialTextPatterns),
-        switchKeepOnTextPatterns = listOrDefault("switchKeepOnTextPatterns", fallback.switchKeepOnTextPatterns),
-        adsPurposeTextPatterns = listOrDefault("adsPurposeTextPatterns", fallback.adsPurposeTextPatterns),
-        statsPurposeTextPatterns = listOrDefault("statsPurposeTextPatterns", fallback.statsPurposeTextPatterns)
+        anchorTextPatterns = PatternList(anchorBase + packs.words("anchor") + bareAnchors),
+        strongAnchorTextPatterns = listOrDefault("strongAnchorTextPatterns", "strongAnchor", fallback.strongAnchorTextPatterns),
+        neverClickTextPatterns = listOrDefault("neverClickTextPatterns", "neverClick", fallback.neverClickTextPatterns),
+        acceptGuardTextPatterns = listOrDefault("acceptGuardTextPatterns", "acceptGuard", fallback.acceptGuardTextPatterns),
+        switchEssentialTextPatterns = listOrDefault("switchEssentialTextPatterns", "switchEssential", fallback.switchEssentialTextPatterns),
+        switchNonEssentialTextPatterns = listOrDefault("switchNonEssentialTextPatterns", "switchNonEssential", fallback.switchNonEssentialTextPatterns),
+        switchKeepOnTextPatterns = listOrDefault("switchKeepOnTextPatterns", "switchKeepOn", fallback.switchKeepOnTextPatterns),
+        adsPurposeTextPatterns = listOrDefault("adsPurposeTextPatterns", "adsPurpose", fallback.adsPurposeTextPatterns),
+        statsPurposeTextPatterns = listOrDefault("statsPurposeTextPatterns", "statsPurpose", fallback.statsPurposeTextPatterns),
+        topLevelWords = fallback.topLevelWords + normalizedWords("topLevelWords"),
+        acceptWords = acceptWords,
+        contextualAnchors = fallback.contextualAnchors + bareAnchors,
+        cookieContextWords = fallback.cookieContextWords + normalizedWords("cookieContext"),
+        sensitiveScreenTextPatterns = listOrDefault("sensitiveScreenTextPatterns", "sensitiveScreen", fallback.sensitiveScreenTextPatterns)
     )
 }
 
@@ -447,7 +593,13 @@ data class ScreenEvidence(
     val consentWording: Boolean = false,
     val choiceButton: Boolean = false,
     val strongPhrases: Int = 0,
-    val hasSwitch: Boolean = false
+    val hasSwitch: Boolean = false,
+    /* The screen offers to accept or to pay, and nothing to choose or reject
+       (a "pay or okay" wall). There is nothing to tap there, so the service
+       stops looking instead of retrying for a long time. */
+    val cookieWall: Boolean = false,
+    /* A card, bank or payment entry screen. Never acted on. */
+    val sensitive: Boolean = false
 )
 
 /* Collects the evidence for one screen a piece of text at a time, so the
@@ -459,6 +611,8 @@ class ScreenJudge(private val lexicon: ConsentLexicon, private val rules: List<C
     private var choiceButton = false
     var hasSwitch = false
     var resourceIdHit = false
+    private var payButton = false
+    private var sensitive = false
 
     /* Whether the accept and the choosing buttons are close together on
        screen, as they are in a banner. The caller works that out from
@@ -474,11 +628,17 @@ class ScreenJudge(private val lexicon: ConsentLexicon, private val rules: List<C
         for (phrase in lexicon.strongAnchorTextPatterns.substrings) {
             if (text.contains(phrase)) strong.add(phrase)
         }
+        if (text.length <= ConsentLexicon.SHORT_LABEL_LENGTH &&
+            lexicon.sensitiveScreenTextPatterns.matchesWords(text)
+        ) {
+            sensitive = true
+        }
         if (mayBeButton && text.length <= ConsentLexicon.SHORT_LABEL_LENGTH) {
             if (lexicon.acceptGuardTextPatterns.matchesWords(text)) {
                 acceptButton = true
                 kind = kind or ACCEPT_BUTTON
             }
+            if (lexicon.neverClickTextPatterns.matchesWords(text)) payButton = true
             for (rule in rules) {
                 if (rule.rejectTextPatterns.matches(text) ||
                     rule.necessaryTextPatterns.matches(text) ||
@@ -501,8 +661,10 @@ class ScreenJudge(private val lexicon: ConsentLexicon, private val rules: List<C
            menu buttons with those very names. */
         val looksLikeConsent = resourceIdHit ||
             (consentWording && ((choiceButton && acceptButton && buttonsClose) || (hasSwitch && enoughStrong)))
+        val wall = consentWording && acceptButton && payButton && !choiceButton && !hasSwitch
         return ScreenEvidence(
-            looksLikeConsent, acceptButton, consentWording, choiceButton, strong.size, hasSwitch
+            looksLikeConsent && !sensitive, acceptButton, consentWording, choiceButton, strong.size,
+            hasSwitch, cookieWall = wall, sensitive = sensitive
         )
     }
 }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test manage ar</title>
+<style>
+body{font:16px/1.5 sans-serif;margin:0;padding:12px 12px 280px}
+#verdict{position:sticky;top:0;background:#222;color:#fff;padding:8px 12px;margin:-12px -12px 12px;font-weight:bold}
+#verdict.pass{background:#1b7a2b} #verdict.fail{background:#b3261e}
+#banner{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:3px solid #444;padding:14px;box-shadow:0 -4px 14px #0004;max-height:70vh;overflow:auto}
+button{font-size:16px;padding:10px 14px;margin:4px 4px 4px 0}
+.big{background:#0a58ca;color:#fff;border:0;font-size:18px;padding:14px 20px}
+a.small{font-size:11px;color:#999;margin-inline-start:8px}
+label{display:block;margin:10px 0}
+</style></head><body>
+<div id="verdict">WAITING</div>
+<h1>manage test (ar)</h1>
+<p>Two step test page. Expect a green PASS bar without touching anything.</p>
+<div id="banner" role="dialog" aria-modal="true" >
+<div id="main"><p>نحن نستخدم ملفات تعريف الارتباط لتخصيص المحتوى وقياس الزيارات.</p><button class="big" type="button" onclick="accepted()">قبول الكل</button><button type="button" onclick="openPanel()">إدارة الخيارات</button></div><div id="panel" hidden><label><input type="checkbox" role="switch" checked disabled> ضرورية للغاية (نشطة دائما)</label><label><input type="checkbox" role="switch" checked> ملفات تعريف الارتباط الإحصائية</label><label><input type="checkbox" role="switch" checked> ملفات تعريف الارتباط الإعلانية</label><label><input type="checkbox" role="switch" checked> الإعلانات المخصصة</label><button type="button" onclick="save()">حفظ التفضيلات</button></div>
+</div>
+<script>
+var v=document.getElementById('verdict'), b=document.getElementById('banner');
+function done(ok,msg){v.textContent=(ok?'PASS ':'FAIL ')+msg;v.className=ok?'pass':'fail';b.hidden=true;}
+function rejected(){done(true,'rejected');}
+function accepted(){done(false,'accepted');}
+function save(){
+  var on=[].filter.call(document.querySelectorAll('#panel input'),function(i){return i.checked&&!i.disabled;});
+  var ess=document.querySelector('#panel input[disabled]');
+  if(on.length){done(false,on.length+' optional switch(es) still on');}
+  else if(!ess||!ess.checked){done(false,'required switch was turned off');}
+  else{done(true,'all optional off, required kept');}
+}
+function openPanel(){document.getElementById('main').hidden=true;document.getElementById('panel').hidden=false;}
+
+</script></body></html>
